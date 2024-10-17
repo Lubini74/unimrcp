@@ -112,9 +112,9 @@ export LDFLAGS="%{build_ldflags} -Wl,-rpath -Wl,%{_libdir}/unimrcp-deps/lib"
 %install
 %make_install
 
-mv -f %{buildroot}/usr/share %{buildroot}%{_sysconfdir}/%{name}/
-mv -f %{buildroot}/usr/log %{buildroot}%{_sysconfdir}/%{name}/
-mv -f %{buildroot}/usr/plugin %{buildroot}%{_sysconfdir}/%{name}/
+mv -f %{buildroot}%{_prefix}/share %{buildroot}%{_sysconfdir}/%{name}/
+mv -f %{buildroot}%{_prefix}/log %{buildroot}%{_sysconfdir}/%{name}/
+mv -f %{buildroot}%{_prefix}/plugin %{buildroot}%{_sysconfdir}/%{name}/
 
 #install -D -m0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}server.service
 
