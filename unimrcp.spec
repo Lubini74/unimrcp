@@ -98,11 +98,13 @@ This package contains development part of UniMRCP.
 # fix build on aarch64
 autoreconf -vfi -Ibuild/acmacros
 
-export PKG_CONFIG_PATH="%{_libdir}/unimrcp-deps/lib/pkgconfig${PKG_CONFIG_PATH}"
-export PATH=%{_libdir}/unimrcp-deps/bin/${PATH:+:${PATH}}
-export LDFLAGS="%{build_ldflags} -Wl,-rpath -Wl,%{_libdir}/unimrcp-deps/lib"
+#export PKG_CONFIG_PATH="%{_libdir}/unimrcp-deps/lib/pkgconfig${PKG_CONFIG_PATH}"
+#export PATH=%{_libdir}/unimrcp-deps/bin/${PATH:+:${PATH}}
+#export LDFLAGS="%{build_ldflags} -Wl,-rpath -Wl,%{_libdir}/unimrcp-deps/lib"
 %configure \
     --sysconfdir=%{_sysconfdir}/%{name} \
+    --with-apr=/opt/unimrcp/lib64/pkgconfig/apr-1.pc \
+    --with-apr-util=/opt/unimrcp/lib64/pkgconfig/apr-util-1.pc \
     --with-sofia-sip=/opt/unimrcp/lib64/pkgconfig/sofia-sip-ua.pc \
     --disable-silent-rules \
     --disable-static
