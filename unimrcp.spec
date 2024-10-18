@@ -148,8 +148,11 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
-%post %{libunimrcpclient} -p /sbin/ldconfig 
-%postun %{libunimrcpclient} -p /sbin/ldconfig 
+%post %{libunimrcpclient}
+/sbin/ldconfig /opt/unimrcp/lib64
+
+%postun %{libunimrcpclient}
+/sbin/ldconfig 
 
 
 %changelog
