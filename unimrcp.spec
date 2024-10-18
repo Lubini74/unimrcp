@@ -102,6 +102,7 @@ autoreconf -vfi -Ibuild/acmacros
 #export PATH=%{_libdir}/unimrcp-deps/bin/${PATH:+:${PATH}}
 #export LDFLAGS="%{build_ldflags} -Wl,-rpath -Wl,%{_libdir}/unimrcp-deps/lib"
 %configure \
+    --prefix=%{_prefix} \
     --sysconfdir=%{_sysconfdir}/%{name} \
     --with-apr=/opt/unimrcp \
     --with-apr-util=/opt/unimrcp \
@@ -150,6 +151,8 @@ find %{buildroot} -name '*.la' -delete
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+
+%post -p /sbin/ldconfig /opt/unimrcp/lib64
 
 
 %changelog
