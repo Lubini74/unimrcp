@@ -154,7 +154,7 @@ echo "/opt/unimrcp/lib64" > %{_sysconfdir}/ld.so.conf.d/unimrcp.conf
 /sbin/ldconfig 
 
 %postun %{libunimrcpclient}
-rm %{buildroot}/etc/ld.so.conf.d/unimrcp.conf
+rm %{_sysconfdir}/ld.so.conf.d/unimrcp.conf
 /sbin/ldconfig 
 
 
