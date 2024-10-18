@@ -149,8 +149,8 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/pkgconfig/*.pc
 
 %post %{libunimrcpclient}
-mkdir -p %{buildroot}/etc/ld.so.conf.d
-echo "/opt/unimrcp/lib64" > %{buildroot}/etc/ld.so.conf.d/unimrcp.conf
+mkdir -p %{_sysconfdir}/ld.so.conf.d
+echo "/opt/unimrcp/lib64" > %{_sysconfdir}/ld.so.conf.d/unimrcp.conf
 /sbin/ldconfig 
 
 %postun %{libunimrcpclient}
