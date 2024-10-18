@@ -103,8 +103,8 @@ autoreconf -vfi -Ibuild/acmacros
 #export LDFLAGS="%{build_ldflags} -Wl,-rpath -Wl,%{_libdir}/unimrcp-deps/lib"
 %configure \
     --sysconfdir=%{_sysconfdir}/%{name} \
-    --with-apr=/opt/unimrcp/lib64/pkgconfig/apr-1.pc \
-    --with-apr-util=/opt/unimrcp/lib64/pkgconfig/apr-util-1.pc \
+    --with-apr=/opt/unimrcp \
+    --with-apr-util=/opt/unimrcp \
     --with-sofia-sip=/opt/unimrcp/lib64/pkgconfig/sofia-sip-ua.pc \
     --disable-silent-rules \
     --disable-static
