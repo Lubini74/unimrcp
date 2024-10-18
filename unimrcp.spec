@@ -152,7 +152,7 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
-%post -p /sbin/ldconfig /opt/unimrcp/lib64
+%post -p /sbin/ldconfig 
 
 
 %changelog
