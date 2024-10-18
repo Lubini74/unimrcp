@@ -78,9 +78,6 @@ Media Resource Control Protocol Stack shared library.
 %package      %{devel}
 Summary:        Media Resource Control Protocol Stack development
 Group:          Development/C
-#Requires:       %{libasrclient} = %{version}-%{release}
-#Requires:       %{libunimrcpclient} = %{version}-%{release}
-#Requires:       %{libunimrcpserver} = %{version}-%{release}
 Provides:       %{name}-devel = %{version}-%{release}
 Provides:       lib%{name}-devel = %{version}-%{release}
 
@@ -136,7 +133,6 @@ find %{buildroot} -name '*.la' -delete
 %{_sysconfdir}/%{name}/plugin
 %{_sysconfdir}/%{name}/share
 %{_sysconfdir}/%{name}/log
-#%attr(0644,root,root) %{_unitdir}/%{name}server.service
 
 %files %{libasrclient}
 %{_libdir}/libasrclient.so.%{major}{,.*}
@@ -152,7 +148,8 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
-%post -p /sbin/ldconfig 
+%post %{libunimrcpclient} -p /sbin/ldconfig 
+%postun %{libunimrcpclient} -p /sbin/ldconfig 
 
 
 %changelog
