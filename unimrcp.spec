@@ -24,7 +24,6 @@ BuildRequires:  pkgconfig(sndfile)
 #BuildRequires:  pkgconfig(sphinxbase)
 
 #Requires:       libunimrcp-deps
-BuildRequires: patchelf
 
 %description
 Media Resource Control Protocol (MRCP) allows to control media processing
@@ -99,7 +98,7 @@ autoreconf -vfi -Ibuild/acmacros
 #export PKG_CONFIG_PATH="%{_libdir}/unimrcp-deps/lib/pkgconfig${PKG_CONFIG_PATH}"
 #export PATH=%{_libdir}/unimrcp-deps/bin/${PATH:+:${PATH}}
 #export LDFLAGS="%{build_ldflags} -Wl,-rpath -Wl,%{_libdir}/unimrcp-deps/lib"
-%configure \
+%configure LDFLAGS="%{build_ldflags} -Wl,-rpath=/opt/unimrcp/lib64" \
     --prefix=%{_prefix} \
     --sysconfdir=%{_sysconfdir}/%{name} \
     --with-apr=/opt/unimrcp \
@@ -112,9 +111,6 @@ autoreconf -vfi -Ibuild/acmacros
 
 %install
 %make_install
-
-# Fix problem with multiple APR libraries, to use our compilation in /opt/unimrcp/lib64
-patchelf --set-rpath /opt/unimrcp/lib64 %{buildroot}/opt/unimrcp/lib64/libunimrcpclient.so.%{major}{,.*}
 
 mv -f %{buildroot}%{_prefix}/share %{buildroot}%{_sysconfdir}/%{name}/
 mv -f %{buildroot}%{_prefix}/log %{buildroot}%{_sysconfdir}/%{name}/
