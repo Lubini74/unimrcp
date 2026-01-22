@@ -9,7 +9,7 @@
 
 Name:           unimrcp
 Version:        1.8.0
-Release:        1
+Release:        2
 Summary:        Media Resource Control Protocol Stack
 License:        Apache
 Group:          System/Servers
